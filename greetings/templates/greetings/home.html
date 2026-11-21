@@ -1,0 +1,22 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Приветствие</title>
+  <link rel="stylesheet" href="{% static 'greetings/style.css' %}">
+</head>
+<body>
+  <main>
+    <h1>{% if greeting %}Привет, {{ greeting.name }}!{% else %}Как вас зовут?{% endif %}</h1>
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {{ form.name.label_tag }}
+      {{ form.name }}
+      {{ form.name.errors }}
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+</body>
+</html>
